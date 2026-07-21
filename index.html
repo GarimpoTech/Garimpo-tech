@@ -3,526 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Garimpo Tech — loja de afiliado</title>
+<title>Garimpo Tech — Achados de tecnologia testados</title>
+<meta name="description" content="Garimpo Tech — vitrine de gadgets e eletrônicos garimpados no Mercado Livre. Tecnologia testada, bem avaliada e com preço justo, direto pra sua casa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://http2.mlstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#14213D;--paper:#F7F4ED;--coral:#FF5A36;--mustard:#F2A93B;--slate:#2B2D42;--wa:#25D366;}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--ink);color:var(--paper);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;}
-header{border-bottom:2px solid rgba(247,244,237,0.15);padding:18px 24px;position:sticky;top:0;z-index:30;background:var(--ink);}
-.header-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;}
-.logo span{color:var(--coral);}
-.header-actions{display:flex;align-items:center;gap:14px;}
-.icon-btn{background:transparent;border:1.5px solid rgba(247,244,237,0.25);color:var(--paper);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;position:relative;transition:border-color .2s ease;}
-.icon-btn:hover{border-color:var(--mustard);}
-.icon-btn svg{width:18px;height:18px;}
-.cart-badge{position:absolute;top:-6px;right:-6px;background:var(--coral);color:white;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.hero{max-width:1140px;margin:0 auto;padding:44px 24px 8px;}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:700;line-height:1.1;max-width:680px;margin-bottom:14px;}
-.hero p{color:rgba(247,244,237,0.65);max-width:520px;font-size:15px;line-height:1.6;}
-.trust-bar{max-width:1140px;margin:28px auto 0;padding:18px 24px;display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid rgba(247,244,237,0.12);border-bottom:1px solid rgba(247,244,237,0.12);}
-.trust-item{display:flex;align-items:center;gap:9px;font-size:12.5px;color:rgba(247,244,237,0.75);}
-.trust-item .ico{font-size:16px;}
-.filters{max-width:1140px;margin:0 auto;padding:28px 24px 28px;display:flex;gap:10px;flex-wrap:wrap;}
-.filter-btn{font-family:'IBM Plex Mono',monospace;font-size:12px;background:transparent;border:1.5px solid rgba(247,244,237,0.25);color:var(--paper);padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s ease;}
-.filter-btn:hover{border-color:var(--mustard);}
-.filter-btn.active{background:var(--coral);border-color:var(--coral);color:white;}
-.grid{max-width:1140px;margin:0 auto;padding:0 24px 70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:22px;}
-.card{background:var(--paper);color:var(--slate);border-radius:6px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,0.28);transition:transform .22s ease,box-shadow .22s ease;}
-.card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.38);}
-.card-img{position:relative;overflow:hidden;height:128px;background:linear-gradient(135deg,#e8e2d2,#d8d0ba);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;color:rgba(43,45,66,0.35);}
-.cat-tag{position:absolute;top:10px;left:10px;background:var(--ink);color:var(--mustard);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.04em;padding:3px 9px;border-radius:2px;text-transform:uppercase;}
-.badge{position:absolute;top:10px;right:10px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.03em;padding:3px 9px;border-radius:2px;text-transform:uppercase;color:white;}
-.badge.bestseller{background:var(--coral);}
-.badge.new{background:var(--mustard);color:var(--ink);}
-.card-body{padding:15px 15px 16px;}
-.card-body h3{font-family:'Space Grotesk',sans-serif;font-size:14.5px;line-height:1.3;margin-bottom:6px;min-height:38px;}
-.stars{font-size:11px;color:var(--coral);margin-bottom:8px;}
-.price-row{display:flex;align-items:baseline;gap:7px;margin-bottom:13px;}
-.price-new{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--coral);}
-.card-actions{display:flex;gap:8px;}
-.add-cart{flex-shrink:0;width:38px;height:38px;border-radius:3px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease,color .2s ease;}
-.add-cart:hover{background:var(--ink);color:var(--paper);}
-.cta{flex:1;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);text-decoration:none;border-radius:3px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12.5px;transition:background .2s ease;}
-.cta:hover{background:var(--coral);}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:40;}
-.overlay.open{opacity:1;pointer-events:auto;}
-.drawer{position:fixed;top:0;right:0;height:100%;width:360px;max-width:88vw;background:var(--paper);color:var(--slate);z-index:50;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;}
-.drawer.open{transform:translateX(0);}
-.drawer-head{padding:20px;border-bottom:1px solid rgba(43,45,66,0.12);display:flex;justify-content:space-between;align-items:center;}
-.drawer-head h2{font-family:'Space Grotesk',sans-serif;font-size:18px;}
-.drawer-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate);}
-.drawer-items{flex:1;overflow-y:auto;padding:14px 20px;}
-.drawer-empty{font-size:13px;color:rgba(43,45,66,0.5);padding:30px 0;text-align:center;}
-.drawer-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(43,45,66,0.08);gap:10px;}
-.drawer-item-name{font-size:13px;font-weight:500;flex:1;}
-.drawer-item-buy{flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;background:var(--ink);color:var(--paper);text-decoration:none;padding:8px 12px;border-radius:4px;transition:background .2s ease;}
-.drawer-item-buy:hover{background:var(--coral);}
-.drawer-item-pending{flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(43,45,66,0.45);padding:8px 4px;}
-.drawer-item-remove{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:none;background:transparent;color:rgba(43,45,66,0.4);cursor:pointer;font-size:13px;}
-.drawer-item-remove:hover{color:var(--coral);}
-.drawer-foot{padding:16px 20px 22px;border-top:1px solid rgba(43,45,66,0.12);}
-.drawer-help{font-size:12px;line-height:1.6;color:rgba(43,45,66,0.65);}
-.drawer-help a{color:var(--ink);font-weight:600;}
-.wa-float{position:fixed;bottom:24px;right:24px;z-index:25;width:54px;height:54px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,0.35);text-decoration:none;}
-.wa-float svg{width:26px;height:26px;fill:white;}
-.insta-section{max-width:1140px;margin:0 auto;padding:10px 24px 60px;text-align:center;}
-.insta-section h2{font-family:'Space Grotesk',sans-serif;font-size:20px;margin-bottom:6px;}
-.insta-section p{font-size:13px;color:rgba(247,244,237,0.55);margin-bottom:20px;}
-.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:680px;margin:0 auto;}
-.insta-tile{aspect-ratio:1;border-radius:4px;background:linear-gradient(135deg,rgba(255,90,54,0.25),rgba(242,169,59,0.18));}
-footer{border-top:2px solid rgba(247,244,237,0.15);padding:28px 24px 40px;}
-.footer-inner{max-width:1140px;margin:0 auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(247,244,237,0.45);line-height:1.7;}
-@media (max-width:480px){.insta-grid{grid-template-columns:repeat(4,1fr);}}
+  :root {
+    --ink: #0f1830;
+    --surface: #17223d;
+    --coral: #FF5A36;
+    --coral-bright: #ff7a52;
+    --mustard: #F2A93B;
+    --paper: #F7F4ED;
+    --slate: #8b97ad;
+    --line: rgba(242,169,59,0.16);
+    --radius: 14px;
+    --max: 1180px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  svg { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  section[id] { scroll-margin-top: 90px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+  .eyebrow {
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em;
+    text-transform:uppercase; color: var(--mustard);
+  }
+  h1, h2, h3 { font-family:'Space Grotesk', sans-serif; font-weight:700; line-height:1.05; }
+
+  /* NAV */
+  .nav {
+    position:sticky; top:0; z-index:50;
+    background: rgba(15,24,48,0.9);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap { display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo { font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:22px; display:flex; align-items:center; gap:9px; }
+  .logo .diamond { width:16px; height:16px; transform:rotate(45deg); border-radius:3px; background:linear-gradient(135deg,var(--coral) 0 50%, var(--mustard) 50% 100%); }
+  .logo span { font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--mustard); letter-spacing:0.16em; }
+  .nav-links { display:flex; gap:32px; font-size:14px; font-weight:500; }
+  .nav-links a { opacity:0.82; transition: opacity .2s, color .2s; }
+  .nav-links a:hover { opacity:1; color:var(--coral-bright); }
+  .nav-cta {
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em;
+    border:1px solid var(--coral); color:var(--coral); padding:9px 18px; border-radius:999px;
+    transition: background .2s, color .2s;
+  }
+  .nav-cta:hover { background:var(--coral); color:#fff; }
+  .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px; }
+  .burger span { width:22px; height:2px; background:var(--paper); border-radius:2px; }
+  .mobile-panel { display:none; flex-direction:column; padding-bottom:18px; }
+  .nav.open .mobile-panel { display:flex; }
+  .mobile-panel a { padding:12px 4px; font-size:15px; border-bottom:1px solid rgba(247,244,237,0.08); }
+
+  /* HERO */
+  .hero { position:relative; padding: 88px 0 64px; overflow:hidden; }
+  .hero .wrap { position:relative; z-index:1; }
+  .hero-vein { position:absolute; top:-40px; right:-100px; width:640px; z-index:0; opacity:0.5; pointer-events:none; }
+  .hero h1 { font-size: clamp(40px, 6vw, 74px); max-width:13ch; margin-top:18px; letter-spacing:-0.02em; }
+  .hero h1 em { font-style:normal; color:var(--coral); }
+  .hero p.sub { margin-top:22px; max-width:48ch; font-size:17px; line-height:1.6; color:var(--slate); }
+  .hero-ctas { display:flex; gap:16px; margin-top:36px; flex-wrap:wrap; }
+  .btn {
+    font-weight:600; font-size:14px; padding:15px 28px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:1px solid transparent;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .btn-primary { background: linear-gradient(120deg,var(--coral),var(--coral-bright)); color:#fff; }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(255,90,54,0.55); }
+  .btn-ghost { border-color: rgba(247,244,237,0.3); color:var(--paper); }
+  .btn-ghost:hover { border-color: var(--paper); }
+  .trust-strip { display:flex; flex-wrap:wrap; gap:28px; margin-top:56px; }
+  .trust-strip span { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--slate); text-transform:uppercase; }
+
+  /* MARQUEE */
+  .marquee { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface); padding:13px 0; overflow:hidden; white-space:nowrap; }
+  .marquee-track { display:inline-flex; gap:48px; animation: scroll 34s linear infinite; }
+  .marquee-track span { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--mustard); text-transform:uppercase; }
+  @keyframes scroll { from { transform:translateX(0);} to { transform:translateX(-50%);} }
+
+  /* VITRINE */
+  .filters { padding-top:56px; }
+  .filters-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+  .filters-head h2 { font-size:clamp(28px,3vw,38px); }
+  .chip-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
+  .chip {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.05em;
+    padding:9px 16px; border-radius:999px; border:1px solid rgba(247,244,237,0.18);
+    color:var(--slate); cursor:pointer; background:transparent; transition: all .2s;
+  }
+  .chip:hover { border-color:var(--coral); color:var(--paper); }
+  .chip.active { background:var(--coral); border-color:var(--coral); color:#fff; font-weight:600; }
+
+  .grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap:22px; }
+  .card {
+    background: var(--surface); border-radius: var(--radius); overflow:hidden;
+    border:1px solid var(--line);
+    display:flex; flex-direction:column;
+    opacity:0; transform:translateY(16px); animation: rise .55s ease forwards;
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .card:hover { border-color: rgba(255,90,54,0.4); transform: translateY(-3px); }
+  @keyframes rise { to { opacity:1; transform:translateY(0);} }
+
+  .card-visual { position:relative; aspect-ratio: 4 / 5; overflow:hidden; }
+  .card-photo {
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#fff;
+    transition: transform .5s ease; z-index:1;
+  }
+  .card:hover .card-photo { transform: scale(1.05); }
+  .card-art { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .card-art svg { width:44%; height:auto; color: rgba(242,169,59,0.42); }
+  .card-art .art-label {
+    position:absolute; bottom:16px; left:0; right:0; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.16em;
+    text-transform:uppercase; color: rgba(139,151,173,0.5);
+  }
+  .card-tag {
+    position:absolute; top:12px; left:12px; z-index:2;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em;
+    color:var(--paper); background:rgba(15,24,48,0.66);
+    -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
+    padding:4px 8px; border-radius:5px;
+  }
+  .card-badge {
+    position:absolute; top:12px; right:12px; z-index:2;
+    background:var(--coral); color:#fff; font-family:'IBM Plex Mono',monospace;
+    font-size:11px; font-weight:600; padding:4px 9px; border-radius:999px;
+  }
+  .card-trend {
+    position:absolute; bottom:12px; right:12px; z-index:2;
+    background:rgba(15,24,48,0.66); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
+    border:1px solid rgba(242,169,59,0.4); font-family:'IBM Plex Mono',monospace;
+    font-size:10px; letter-spacing:0.05em; color:var(--mustard);
+    padding:5px 10px; border-radius:999px; text-transform:uppercase;
+  }
+
+  .card-body { padding:16px 16px 18px; display:flex; flex-direction:column; flex:1; }
+  .card-cat { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--mustard); text-transform:uppercase; margin-bottom:6px; }
+  .card-name { font-size:15.5px; font-weight:600; font-family:'IBM Plex Sans',sans-serif; line-height:1.35; margin-bottom:9px; }
+  .card-proof { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--slate); margin-bottom:12px; }
+  .card-proof .star { color: var(--mustard); }
+  .price-row { display:flex; align-items:baseline; gap:9px; margin-bottom:14px; margin-top:auto; }
+  .price-old { font-size:13px; color:var(--slate); text-decoration:line-through; }
+  .price-new { font-size:20px; font-weight:700; color:var(--paper); font-family:'Space Grotesk',sans-serif; }
+  .card-cta {
+    display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+    padding:12px; border-radius:999px; background:transparent; border:1px solid var(--coral);
+    color:var(--coral); font-weight:600; font-size:13px; cursor:pointer;
+    transition: background .2s, color .2s;
+  }
+  .card-cta:hover { background:var(--coral); color:#fff; }
+
+  .load-more-row { display:flex; justify-content:center; padding: 42px 0 0; }
+  .empty-note { color:var(--slate); font-size:14px; padding: 20px 0 40px; }
+
+  /* HOW */
+  .how { padding-top:96px; padding-bottom:100px; }
+  .how-inner { border-top:1px solid var(--line); padding-top:48px; }
+  .how h2 { margin-top:14px; font-size:clamp(26px,3vw,34px); max-width:22ch; }
+  .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:40px; }
+  .how-step .num { font-family:'IBM Plex Mono',monospace; color:var(--mustard); font-size:13px; margin-bottom:14px; display:block; }
+  .how-step h3 { font-size:19px; margin-bottom:10px; }
+  .how-step p { font-size:14px; color:var(--slate); line-height:1.6; }
+
+  /* FOOTER */
+  footer { background:var(--surface); border-top:1px solid var(--line); padding-top:56px; padding-bottom:32px; }
+  .foot-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+  .foot-brand p { color:var(--slate); font-size:13.5px; line-height:1.7; margin-top:14px; max-width:36ch; }
+  .foot-col h4 { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mustard); margin-bottom:16px; }
+  .foot-col a { display:block; color:var(--slate); font-size:13.5px; margin-bottom:10px; }
+  .foot-col a:hover { color:var(--paper); }
+  .disclosure { margin-top:44px; padding-top:24px; border-top:1px solid rgba(247,244,237,0.08); font-size:12px; color:var(--slate); line-height:1.7; max-width:78ch; }
+  .copyright { margin-top:18px; font-size:12px; color:rgba(139,151,173,0.6); }
+
+  @media (max-width: 860px) {
+    .nav-links, .nav-cta { display:none; }
+    .burger { display:flex; }
+    .how-grid { grid-template-columns:1fr; gap:28px; }
+    .foot-grid { grid-template-columns:1fr; gap:28px; }
+    .hero { padding-top:56px; }
+    .grid { grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap:14px; }
+    .card-body { padding:12px 12px 14px; }
+    .card-name { font-size:14px; }
+    .price-new { font-size:18px; }
+    .card-cta { font-size:12px; padding:11px 6px; white-space:nowrap; }
+    .card-proof { font-size:11.5px; margin-bottom:10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--mustard); outline-offset:3px; }
 </style>
 </head>
 <body>
-<header><div class="header-inner"><div class="logo">Garimpo <span>Tech</span></div><div class="header-actions"><a class="icon-btn" href="https://www.instagram.com/garimpo.tech3/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a><button class="icon-btn" id="cartToggle" aria-label="Produtos selecionados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" id="cartBadge">0</span></button></div></div></header>
-<div class="hero"><h1>Gadgets que valem o clique, testados antes de indicar.</h1><p>35 produtos em alta agora no Mercado Livre, selecionados por categoria, preço e avaliação real. Sem patrocínio escondido.</p></div>
-<div class="trust-bar"><div class="trust-item"><span class="ico">🚚</span> Frete grátis em itens selecionados</div><div class="trust-item"><span class="ico">🔒</span> Compra segura nas lojas parceiras</div><div class="trust-item"><span class="ico">💬</span> Tira dúvida direto no WhatsApp</div><div class="trust-item"><span class="ico">⭐</span> Avaliações de quem comprou</div></div>
-<div class="filters" id="filters"><button class="filter-btn active" data-cat="all">Tudo</button><button class="filter-btn" data-cat="gadgets">Gadgets</button><button class="filter-btn" data-cat="audio">Áudio</button><button class="filter-btn" data-cat="casa">Casa Inteligente</button><button class="filter-btn" data-cat="gaming">Gaming</button><button class="filter-btn" data-cat="mobilidade">Mobilidade</button><button class="filter-btn" data-cat="cozinha">Cozinha</button><button class="filter-btn" data-cat="fitness">Fitness</button></div>
-<div class="grid" id="grid">
-    <div class="card" data-cat="gadgets">
-      <div class="card-img"><span class="cat-tag">Gadgets</span><img src="https://http2.mlstatic.com/D_Q_NP_964858-MLA108951129599_032026-O.webp" alt="Adaptador Hub USB 8 Portas RJ45 HDMI USB 3.0 e 2.0 Tipo C Voxo" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Adaptador Hub USB 8 Portas RJ45 HDMI USB 3.0 e 2.0 Tipo C Voxo</h3>
-        <div class="stars">★★★★★ 4.7</div>
-        <div class="price-row"><span class="price-new">R$ 62,60</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="p1" data-name="Adaptador Hub USB 8 Portas RJ45 HDMI USB 3.0 e 2.0 Tipo C Voxo" data-price="63" data-link="https://meli.la/3242dy9">+</button>
-          <a href="https://meli.la/3242dy9" class="cta" data-produto-ml="Adaptador Hub USB 8 Portas RJ45 HDMI USB 3.0 e 2.0 Tipo C Voxo">Ver oferta →</a>
+
+  <header class="nav" id="siteNav">
+    <div class="wrap">
+      <a href="#top" class="logo"><span class="diamond"></span>Garimpo <span>TECH</span></a>
+      <nav class="nav-links">
+        <a href="#vitrine">Vitrine</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+      <a class="nav-cta" href="#vitrine">Ver achados de hoje →</a>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="wrap mobile-panel" id="mobilePanel">
+      <a href="#vitrine">Vitrine</a>
+      <a href="#como-funciona">Como funciona</a>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <svg class="hero-vein" viewBox="0 0 640 420" fill="none" aria-hidden="true">
+      <path d="M-20 340 C120 300 160 380 260 300 C360 220 380 120 520 140 C580 148 600 100 660 60" stroke="url(#veinGrad)" stroke-width="2.5" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="veinGrad" x1="0" y1="0" x2="640" y2="420">
+          <stop offset="0%" stop-color="#FF5A36" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#F2A93B" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#FF5A36" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Garimpo Tech · Achados de Tecnologia</p>
+      <h1>Tecnologia que vale <em>garimpar.</em></h1>
+      <p class="sub">Vasculhamos o Mercado Livre todo dia atrás dos gadgets e eletrônicos que valem a pena — testados, bem avaliados e com preço justo, direto pra sua casa.</p>
+      <div class="hero-ctas">
+        <a href="#vitrine" class="btn btn-primary">Ver achados de hoje ↓</a>
+        <a href="#como-funciona" class="btn btn-ghost">Como funciona</a>
+      </div>
+      <div class="trust-strip">
+        <span>Frete grátis em itens selecionados</span>
+        <span>Compra segura no Mercado Livre</span>
+        <span>Entrega rastreada</span>
+        <span>Avaliações reais de quem comprou</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Novos achados toda semana</span>
+      <span>Tecnologia testada de verdade</span>
+      <span>Envio rápido Mercado Livre</span>
+      <span>Siga @garimpo.tech3</span>
+      <span>Novos achados toda semana</span>
+      <span>Tecnologia testada de verdade</span>
+      <span>Envio rápido Mercado Livre</span>
+      <span>Siga @garimpo.tech3</span>
+    </div>
+  </div>
+
+  <section class="filters wrap" id="vitrine">
+    <div class="filters-head">
+      <h2>Vitrine de achados</h2>
+      <p class="eyebrow" id="countLabel">35 achados garimpados</p>
+    </div>
+    <div class="chip-row" id="chipRow"></div>
+    <div class="grid" id="grid"></div>
+    <div class="load-more-row" id="loadMoreRow">
+      <button class="btn btn-ghost" id="loadMore">Ver mais achados</button>
+    </div>
+  </section>
+
+  <section class="how wrap" id="como-funciona">
+    <div class="how-inner">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Do garimpo até a sua porta, em três passos.</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <span class="num">01</span>
+          <h3>Garimpe seu gadget</h3>
+          <p>Filtre por categoria na vitrine e encontre a peça de tecnologia que combina com você.</p>
+        </div>
+        <div class="how-step">
+          <span class="num">02</span>
+          <h3>Compre no Mercado Livre</h3>
+          <p>Clique em "Ver no Mercado Livre" e finalize a compra com pagamento protegido.</p>
+        </div>
+        <div class="how-step">
+          <span class="num">03</span>
+          <h3>Receba em casa</h3>
+          <p>Acompanhe o pedido com entrega rastreada até a porta, sem sair do sofá.</p>
         </div>
       </div>
     </div>
-    <div class="card" data-cat="gadgets">
-      <div class="card-img"><span class="cat-tag">Gadgets</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_806611-MLB111053855601_042026-E.webp" alt="Mousepad E-coibeu Carregamento Inducao Rapido RGB 17 Cores" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Mousepad E-coibeu Carregamento Inducao Rapido RGB 17 Cores</h3>
-        <div class="stars">★★★★☆ 4.3</div>
-        <div class="price-row"><span class="price-new">R$ 199</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="p2" data-name="Mousepad E-coibeu Carregamento Inducao Rapido RGB 17 Cores" data-price="199" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Mousepad E-coibeu Carregamento Inducao Rapido RGB 17 Cores">Ver oferta →</a>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="#top" class="logo"><span class="diamond"></span>Garimpo <span>TECH</span></a>
+          <p>Curadoria de tecnologia garimpada no Mercado Livre — gadgets e eletrônicos testados, selecionados pelo custo-benefício. Marca irmã do Garimpo Look.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Navegar</h4>
+          <a href="#vitrine">Vitrine</a>
+          <a href="#como-funciona">Como funciona</a>
+        </div>
+        <div class="foot-col">
+          <h4>Fale com a gente</h4>
+          <a href="https://www.instagram.com/garimpo.tech3/" target="_blank" rel="noopener">Instagram @garimpo.tech3</a>
+          <a href="https://wa.me/5544998149988" target="_blank" rel="noopener">WhatsApp (dúvidas)</a>
         </div>
       </div>
+      <p class="disclosure">Garimpo Tech é um site independente e não é operado pelo Mercado Livre. Os links de produtos são links de afiliado: ao clicar e comprar através deles, o Garimpo Tech pode receber uma comissão, sem nenhum custo adicional para você. Preços, estoque e prazos são definidos pelo Mercado Livre e podem mudar a qualquer momento.</p>
+      <p class="copyright">© 2026 Garimpo Tech. Todos os direitos reservados.</p>
     </div>
-    <div class="card" data-cat="gadgets">
-      <div class="card-img"><span class="cat-tag">Gadgets</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_862425-MLA95804056004_102025-O.webp" alt="Base Suporte Notebook Aluminio Portatil Articulado Davely" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Base Suporte Notebook Aluminio Portatil Articulado Davely</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 24,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="p3" data-name="Base Suporte Notebook Aluminio Portatil Articulado Davely" data-price="25" data-link="https://meli.la/1bg1AjV">+</button>
-          <a href="https://meli.la/1bg1AjV" class="cta" data-produto-ml="Base Suporte Notebook Aluminio Portatil Articulado Davely">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gadgets">
-      <div class="card-img"><span class="cat-tag">Gadgets</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_858239-MLB91344395515_082025-E-clip-magnetico-organizador-fios-cabos-kit-12-unid-adesivo-3m.webp" alt="Clip Magnetico Organizador Fios Cabos Kit 12 Unid Adesivo" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Clip Magnetico Organizador Fios Cabos Kit 12 Unid Adesivo</h3>
-        <div class="stars">★★★★☆ 4.4</div>
-        <div class="price-row"><span class="price-new">R$ 37</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="p4" data-name="Clip Magnetico Organizador Fios Cabos Kit 12 Unid Adesivo" data-price="37" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Clip Magnetico Organizador Fios Cabos Kit 12 Unid Adesivo">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gadgets">
-      <div class="card-img"><span class="cat-tag">Gadgets</span><span class="badge new">Novo</span><img src="https://http2.mlstatic.com/D_Q_NP_915118-MLA108945969324_032026-O.webp" alt="Mini Projetor Smart Portatil Full HD 4K Android Wi-Fi" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Mini Projetor Smart Portatil Full HD 4K Android Wi-Fi</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 358,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="p5" data-name="Mini Projetor Smart Portatil Full HD 4K Android Wi-Fi" data-price="359" data-link="https://meli.la/1fvM5MK">+</button>
-          <a href="https://meli.la/1fvM5MK" class="cta" data-produto-ml="Mini Projetor Smart Portatil Full HD 4K Android Wi-Fi">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="audio">
-      <div class="card-img"><span class="cat-tag">Áudio</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_653869-MLA106986107684_022026-O.webp" alt="Fone Bluetooth 5.4 TWS Anti Ruido a Prova Dagua Pro Phone See" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Fone Bluetooth 5.4 TWS Anti Ruido a Prova Dagua Pro Phone See</h3>
-        <div class="stars">★★★★★ 4.7</div>
-        <div class="price-row"><span class="price-new">R$ 78,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="a1" data-name="Fone Bluetooth 5.4 TWS Anti Ruido a Prova Dagua Pro Phone See" data-price="149" data-link="https://meli.la/2QBKHCh">+</button>
-          <a href="https://meli.la/2QBKHCh" class="cta" data-produto-ml="Fone Bluetooth 5.4 TWS Anti Ruido a Prova Dagua Pro Phone See">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="audio">
-      <div class="card-img"><span class="cat-tag">Áudio</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_935289-MLA100007937509_122025-E.webp" alt="Fone Xiaomi Redmi Buds 6 Play" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Fone Xiaomi Redmi Buds 6 Play</h3>
-        <div class="stars">★★★★☆ 4.5</div>
-        <div class="price-row"><span class="price-new">R$ 88 – R$ 110</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="a2" data-name="Fone Xiaomi Redmi Buds 6 Play" data-price="99" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Fone Xiaomi Redmi Buds 6 Play">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="audio">
-      <div class="card-img"><span class="cat-tag">Áudio</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_615398-MLA99983139077_112025-E.webp" alt="Fone JBL Wave Buds 2 Perfect Fit 40 Horas Preto" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Fone JBL Wave Buds 2 Perfect Fit 40 Horas Preto</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 289</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="a3" data-name="Fone JBL Wave Buds 2 Perfect Fit 40 Horas Preto" data-price="289" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Fone JBL Wave Buds 2 Perfect Fit 40 Horas Preto">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="audio">
-      <div class="card-img"><span class="cat-tag">Áudio</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_696469-MLA88622010488_072025-E.webp" alt="Fone Headphone Bluetooth Basike BA-FON193 ANC Microfone 40h" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Fone Headphone Bluetooth Basike BA-FON193 ANC Microfone 40h</h3>
-        <div class="stars">★★★★☆ 4.5</div>
-        <div class="price-row"><span class="price-new">R$ 256</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="a4" data-name="Fone Headphone Bluetooth Basike BA-FON193 ANC Microfone 40h" data-price="256" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Fone Headphone Bluetooth Basike BA-FON193 ANC Microfone 40h">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="audio">
-      <div class="card-img"><span class="cat-tag">Áudio</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_899140-MLA105238975450_012026-E.webp" alt="Caixa de Som Bluetooth Portatil Boombox IPX7 Prova Dagua" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Caixa de Som Bluetooth Portatil Boombox IPX7 Prova Dagua</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 499</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="a5" data-name="Caixa de Som Bluetooth Portatil Boombox IPX7 Prova Dagua" data-price="499" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Caixa de Som Bluetooth Portatil Boombox IPX7 Prova Dagua">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="casa">
-      <div class="card-img"><span class="cat-tag">Casa Inteligente</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_650934-MLA100081933705_122025-O.webp" alt="Kit 2 Lampadas Smart Wi-Fi Positivo 9W RGB" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Kit 2 Lampadas Smart Wi-Fi Positivo 9W RGB</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 129,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="c1" data-name="Kit 2 Lampadas Smart Wi-Fi Positivo 9W RGB" data-price="45" data-link="https://meli.la/2cs6dKW">+</button>
-          <a href="https://meli.la/2cs6dKW" class="cta" data-produto-ml="Kit 2 Lampadas Smart Wi-Fi Positivo 9W RGB">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="casa">
-      <div class="card-img"><span class="cat-tag">Casa Inteligente</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_953374-MLA96319906125_102025-O.webp" alt="Tomada Inteligente Smart Wi-Fi Controle Automacao Ekaza 16A" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Tomada Inteligente Smart Wi-Fi Controle Automacao Ekaza 16A</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 62,76</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="c2" data-name="Tomada Inteligente Smart Wi-Fi Controle Automacao Ekaza 16A" data-price="49" data-link="https://meli.la/2hdNPAU">+</button>
-          <a href="https://meli.la/2hdNPAU" class="cta" data-produto-ml="Tomada Inteligente Smart Wi-Fi Controle Automacao Ekaza 16A">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="casa">
-      <div class="card-img"><span class="cat-tag">Casa Inteligente</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_854919-MLA99506623242_112025-E.webp" alt="Lampada Inteligente Wi-Fi TP-Link Tapo L530E RGB" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Lampada Inteligente Wi-Fi TP-Link Tapo L530E RGB</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 59</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="c3" data-name="Lampada Inteligente Wi-Fi TP-Link Tapo L530E RGB" data-price="59" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Lampada Inteligente Wi-Fi TP-Link Tapo L530E RGB">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="casa">
-      <div class="card-img"><span class="cat-tag">Casa Inteligente</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_923586-MLA99504165032_112025-E.webp" alt="Lampada Smart Inteligente Alexa Wi-Fi EWS 410 Intelbras RGB" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Lampada Smart Inteligente Alexa Wi-Fi EWS 410 Intelbras RGB</h3>
-        <div class="stars">★★★★★ 4.7</div>
-        <div class="price-row"><span class="price-new">R$ 39</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="c4" data-name="Lampada Smart Inteligente Alexa Wi-Fi EWS 410 Intelbras RGB" data-price="39" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Lampada Smart Inteligente Alexa Wi-Fi EWS 410 Intelbras RGB">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="casa">
-      <div class="card-img"><span class="cat-tag">Casa Inteligente</span><img src="https://http2.mlstatic.com/D_Q_NP_895249-MLA100058685411_122025-O.webp" alt="Interruptor Inteligente Wi-Fi Novadigital 3 Teclas Touch" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Interruptor Inteligente Wi-Fi Novadigital 3 Teclas Touch</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 77,99</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="c5" data-name="Interruptor Inteligente Wi-Fi Novadigital 3 Teclas Touch" data-price="69" data-link="https://meli.la/1sTCQMm">+</button>
-          <a href="https://meli.la/1sTCQMm" class="cta" data-produto-ml="Interruptor Inteligente Wi-Fi Novadigital 3 Teclas Touch">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gaming">
-      <div class="card-img"><span class="cat-tag">Gaming</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_712796-MLA113000545086_072026-O.webp" alt="Mouse Gamer Redragon Cobra Pro M711-Pro Wireless" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Mouse Gamer Redragon Cobra Pro M711-Pro Wireless</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 295,54</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="g1" data-name="Mouse Gamer Redragon Cobra Pro M711-Pro Wireless" data-price="179" data-link="https://meli.la/1mQSaEr">+</button>
-          <a href="https://meli.la/1mQSaEr" class="cta" data-produto-ml="Mouse Gamer Redragon Cobra Pro M711-Pro Wireless">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gaming">
-      <div class="card-img"><span class="cat-tag">Gaming</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_709473-CBT94601479491_102025-E.webp" alt="Mouse Logitech G502 Hero Sensor 25K 25600 DPI" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Mouse Logitech G502 Hero Sensor 25K 25600 DPI</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 306</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="g2" data-name="Mouse Logitech G502 Hero Sensor 25K 25600 DPI" data-price="306" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Mouse Logitech G502 Hero Sensor 25K 25600 DPI">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gaming">
-      <div class="card-img"><span class="cat-tag">Gaming</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_694158-MLA99986025645_112025-E.webp" alt="Teclado Gamer HyperX Alloy Core RGB Abnt2" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Teclado Gamer HyperX Alloy Core RGB Abnt2</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 299</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="g3" data-name="Teclado Gamer HyperX Alloy Core RGB Abnt2" data-price="299" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Teclado Gamer HyperX Alloy Core RGB Abnt2">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gaming">
-      <div class="card-img"><span class="cat-tag">Gaming</span><span class="badge new">Novo</span><img src="https://http2.mlstatic.com/D_Q_NP_863907-MLA99574319282_122025-O.webp" alt="Kit Gamer Completo Exbom Teclado Membrana e Mouse Optico" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Kit Gamer Completo Exbom Teclado Membrana e Mouse Optico</h3>
-        <div class="stars">★★★★☆ 4.5</div>
-        <div class="price-row"><span class="price-new">R$ 64,50</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="g4" data-name="Kit Gamer Completo Exbom Teclado Membrana e Mouse Optico" data-price="199" data-link="https://meli.la/14PL8Pb">+</button>
-          <a href="https://meli.la/14PL8Pb" class="cta" data-produto-ml="Kit Gamer Completo Exbom Teclado Membrana e Mouse Optico">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="gaming">
-      <div class="card-img"><span class="cat-tag">Gaming</span><img src="https://http2.mlstatic.com/D_Q_NP_759854-MLA99487952684_112025-O.webp" alt="Headset Gamer Havit H2002D P3 Multiplataforma" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Headset Gamer Havit H2002D P3 Multiplataforma</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 219,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="g5" data-name="Headset Gamer Havit H2002D P3 Multiplataforma" data-price="129" data-link="https://meli.la/33xwsze">+</button>
-          <a href="https://meli.la/33xwsze" class="cta" data-produto-ml="Headset Gamer Havit H2002D P3 Multiplataforma">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="mobilidade">
-      <div class="card-img"><span class="cat-tag">Mobilidade</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_851163-MLA99453292502_112025-O.webp" alt="Power Bank Pro 20000mAh ELG PB200BK PD+QC3.0" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Power Bank Pro 20000mAh ELG PB200BK PD+QC3.0</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 200,99</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="m1" data-name="Power Bank Pro 20000mAh ELG PB200BK PD+QC3.0" data-price="129" data-link="https://meli.la/1qh8fgh">+</button>
-          <a href="https://meli.la/1qh8fgh" class="cta" data-produto-ml="Power Bank Pro 20000mAh ELG PB200BK PD+QC3.0">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="mobilidade">
-      <div class="card-img"><span class="cat-tag">Mobilidade</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_723772-MLB93940064029_102025-E.webp" alt="Carregador Portatil Power Bank Turbo i2GO 20000mAh 20W" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Carregador Portatil Power Bank Turbo i2GO 20000mAh 20W</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 329</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="m2" data-name="Carregador Portatil Power Bank Turbo i2GO 20000mAh 20W" data-price="329" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Carregador Portatil Power Bank Turbo i2GO 20000mAh 20W">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="mobilidade">
-      <div class="card-img"><span class="cat-tag">Mobilidade</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_856541-MLA104279190229_012026-O.webp" alt="Carregador Turbo 45W para Samsung S22/S23/S24" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Carregador Turbo 45W para Samsung S22/S23/S24</h3>
-        <div class="stars">★★★★☆ 4.4</div>
-        <div class="price-row"><span class="price-new">R$ 159,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="m3" data-name="Carregador Turbo 45W para Samsung S22/S23/S24" data-price="49" data-link="https://meli.la/16ahB79">+</button>
-          <a href="https://meli.la/16ahB79" class="cta" data-produto-ml="Carregador Turbo 45W para Samsung S22/S23/S24">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="mobilidade">
-      <div class="card-img"><span class="cat-tag">Mobilidade</span><img src="https://http2.mlstatic.com/D_Q_NP_737097-MLA108177568778_032026-O.webp" alt="Power Bank 20000mAh Carregador Portatil Turbo 22.5W Display Digital" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Power Bank 20000mAh Carregador Portatil Turbo 22.5W Display Digital</h3>
-        <div class="stars">★★★★★ 4.7</div>
-        <div class="price-row"><span class="price-new">R$ 122,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="m4" data-name="Power Bank 20000mAh Carregador Portatil Turbo 22.5W Display Digital" data-price="76" data-link="https://meli.la/2MEwgeq">+</button>
-          <a href="https://meli.la/2MEwgeq" class="cta" data-produto-ml="Power Bank 20000mAh Carregador Portatil Turbo 22.5W Display Digital">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="mobilidade">
-      <div class="card-img"><span class="cat-tag">Mobilidade</span><img src="https://http2.mlstatic.com/D_Q_NP_977870-MLA110172900055_042026-O.webp" alt="Suporte Veicular 360 para Celular Automotivo Dtimp" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Suporte Veicular 360 para Celular Automotivo Dtimp</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 49,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="m5" data-name="Suporte Veicular 360 para Celular Automotivo Dtimp" data-price="65" data-link="https://meli.la/1CS9UU8">+</button>
-          <a href="https://meli.la/1CS9UU8" class="cta" data-produto-ml="Suporte Veicular 360 para Celular Automotivo Dtimp">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="cozinha">
-      <div class="card-img"><span class="cat-tag">Cozinha</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_916338-MLA100014649407_122025-O.webp" alt="Fritadeira Air Fryer 5,5L Widemax Midea 1900W" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Fritadeira Air Fryer 5,5L Widemax Midea 1900W</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 466,21</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="k1" data-name="Fritadeira Air Fryer 5,5L Widemax Midea 1900W" data-price="352" data-link="https://meli.la/2itsEJt">+</button>
-          <a href="https://meli.la/2itsEJt" class="cta" data-produto-ml="Fritadeira Air Fryer 5,5L Widemax Midea 1900W">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="cozinha">
-      <div class="card-img"><span class="cat-tag">Cozinha</span><img src="https://http2.mlstatic.com/D_Q_NP_705038-MLA99580433144_122025-O.webp" alt="Air Fryer Oven WAP WAOD2 12L Inox 4 em 1" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Air Fryer Oven WAP WAOD2 12L Inox 4 em 1</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 514,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="k2" data-name="Air Fryer Oven WAP WAOD2 12L Inox 4 em 1" data-price="499" data-link="https://meli.la/1jtG7Be">+</button>
-          <a href="https://meli.la/1jtG7Be" class="cta" data-produto-ml="Air Fryer Oven WAP WAOD2 12L Inox 4 em 1">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="cozinha">
-      <div class="card-img"><span class="cat-tag">Cozinha</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_818147-MLA99507423644_112025-O.webp" alt="Air Fryer Philips Walita Serie 3000 7,2L Digital" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Air Fryer Philips Walita Serie 3000 7,2L Digital</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 1.097,38</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="k3" data-name="Air Fryer Philips Walita Serie 3000 7,2L Digital" data-price="329" data-link="https://meli.la/1avuDXh">+</button>
-          <a href="https://meli.la/1avuDXh" class="cta" data-produto-ml="Air Fryer Philips Walita Serie 3000 7,2L Digital">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="cozinha">
-      <div class="card-img"><span class="cat-tag">Cozinha</span><img src="https://http2.mlstatic.com/D_Q_NP_613737-MLA99529655740_122025-O.webp" alt="Liquidificador Easy Power Mondial 550W" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Liquidificador Easy Power Mondial 550W</h3>
-        <div class="stars">★★★★★ 4.7</div>
-        <div class="price-row"><span class="price-new">R$ 139,90</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="k4" data-name="Liquidificador Easy Power Mondial 550W" data-price="272" data-link="https://meli.la/11R96p7">+</button>
-          <a href="https://meli.la/11R96p7" class="cta" data-produto-ml="Liquidificador Easy Power Mondial 550W">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="cozinha">
-      <div class="card-img"><span class="cat-tag">Cozinha</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_975977-MLB90459287811_082025-E-liquidificador-britania-diamante-900w-4-vel-c-filtro-preto.webp" alt="Liquidificador Britania Diamante 900W 4 Velocidades com Filtro" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Liquidificador Britania Diamante 900W 4 Velocidades com Filtro</h3>
-        <div class="stars">★★★★☆ 4.5</div>
-        <div class="price-row"><span class="price-new">R$ 233</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="k5" data-name="Liquidificador Britania Diamante 900W 4 Velocidades com Filtro" data-price="233" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Liquidificador Britania Diamante 900W 4 Velocidades com Filtro">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="fitness">
-      <div class="card-img"><span class="cat-tag">Fitness</span><span class="badge bestseller">Mais vendido</span><img src="https://http2.mlstatic.com/D_Q_NP_674204-MLA99446580250_112025-O.webp" alt="Smartwatch Samsung Galaxy Fit3 Display 1.6 Rose" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Smartwatch Samsung Galaxy Fit3 Display 1.6 Rose</h3>
-        <div class="stars">★★★★★ 4.9</div>
-        <div class="price-row"><span class="price-new">R$ 499,89</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="f1" data-name="Smartwatch Samsung Galaxy Fit3 Display 1.6 Rose" data-price="269" data-link="https://meli.la/1hcr8o4">+</button>
-          <a href="https://meli.la/1hcr8o4" class="cta" data-produto-ml="Smartwatch Samsung Galaxy Fit3 Display 1.6 Rose">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="fitness">
-      <div class="card-img"><span class="cat-tag">Fitness</span><img src="https://http2.mlstatic.com/D_Q_NP_929871-MLA109124146952_042026-O.webp" alt="Smartwatch Redmi Watch 5 Lite Pulseira Silicone" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Smartwatch Redmi Watch 5 Lite Pulseira Silicone</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 299,25</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="f2" data-name="Smartwatch Redmi Watch 5 Lite Pulseira Silicone" data-price="249" data-link="https://meli.la/2jAJ8RE">+</button>
-          <a href="https://meli.la/2jAJ8RE" class="cta" data-produto-ml="Smartwatch Redmi Watch 5 Lite Pulseira Silicone">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="fitness">
-      <div class="card-img"><span class="cat-tag">Fitness</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_819564-MLB84807307167_052025-E-relogio-inteligente-smartband-huawei-band-10-esportivo-gps.webp" alt="Smartband Huawei Band 10 Esportivo GPS" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Smartband Huawei Band 10 Esportivo GPS</h3>
-        <div class="stars">★★★★★ 4.6</div>
-        <div class="price-row"><span class="price-new">R$ 560</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="f3" data-name="Smartband Huawei Band 10 Esportivo GPS" data-price="560" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Smartband Huawei Band 10 Esportivo GPS">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="fitness">
-      <div class="card-img"><span class="cat-tag">Fitness</span><img src="https://http2.mlstatic.com/D_Q_NP_988250-MLA110983487420_052026-O.webp" alt="Relogio Xiaomi Smart Band 9 Active 5ATM Branco" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Relogio Xiaomi Smart Band 9 Active 5ATM Branco</h3>
-        <div class="stars">★★★★★ 4.8</div>
-        <div class="price-row"><span class="price-new">R$ 345,73</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="f4" data-name="Relogio Xiaomi Smart Band 9 Active 5ATM Branco" data-price="225" data-link="https://meli.la/298swuL">+</button>
-          <a href="https://meli.la/298swuL" class="cta" data-produto-ml="Relogio Xiaomi Smart Band 9 Active 5ATM Branco">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-cat="fitness">
-      <div class="card-img"><span class="cat-tag">Fitness</span><span class="badge new">Novo</span><img src="https://http2.mlstatic.com/D_Q_NP_2X_720604-MLA100008286363_122025-E.webp" alt="Smartwatch Amazfit GTS 4 Mini 1.65 Black" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="card-body">
-        <h3>Smartwatch Amazfit GTS 4 Mini 1.65 Black</h3>
-        <div class="stars">★★★★☆ 4.5</div>
-        <div class="price-row"><span class="price-new">R$ 640</span></div>
-        <div class="card-actions">
-          <button class="add-cart" data-id="f5" data-name="Smartwatch Amazfit GTS 4 Mini 1.65 Black" data-price="640" data-link="#">+</button>
-          <a href="#" class="cta" data-produto-ml="Smartwatch Amazfit GTS 4 Mini 1.65 Black">Ver oferta →</a>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="insta-section"><h2>Siga @garimpo.tech3</h2><p>Achados novos toda semana, direto no feed</p><div class="insta-grid"><div class="insta-tile"></div><div class="insta-tile"></div><div class="insta-tile"></div><div class="insta-tile"></div><div class="insta-tile"></div><div class="insta-tile"></div></div></div>
-<footer><div class="footer-inner">Produtos verificados direto no link de afiliado (nome, preço e foto reais, conferidos individualmente em julho/2026). Fotos em alta resolução. WhatsApp e Instagram são os dados reais.<br>Contém links de afiliado · posso ganhar comissão sem custo extra pra você.</div></footer>
-<a class="wa-float" href="https://wa.me/5544998149988?text=Ol%C3%A1%2C%20Vim%20da%20GarimpoTech%20e%20queria%20tirar%20uma%20duvida!" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.39-1.18l-.31-.18-3.01.79.8-2.94-.2-.32A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg></a>
-<div class="overlay" id="overlay"></div>
-<div class="drawer" id="drawer"><div class="drawer-head"><h2>Produtos selecionados</h2><button class="drawer-close" id="drawerClose">✕</button></div><div class="drawer-items" id="drawerItems"><div class="drawer-empty">Nenhum produto selecionado ainda. Clique no "+" nos cards pra comparar aqui.</div></div><div class="drawer-foot"><p class="drawer-help">Cada compra é feita direto no site do Mercado Livre, com segurança deles — sem precisar falar comigo. Ficou com dúvida sobre algum produto? <a href="https://wa.me/5544998149988?text=Ol%C3%A1%2C%20Vim%20da%20GarimpoTech%20e%20queria%20tirar%20uma%20duvida!" target="_blank" rel="noopener">Chama no WhatsApp</a>.</p></div></div>
+  </footer>
+
 <script>
-const cart={};const cartBadge=document.getElementById('cartBadge');const drawerItems=document.getElementById('drawerItems');const drawer=document.getElementById('drawer');const overlay=document.getElementById('overlay');
-function openDrawer(){drawer.classList.add('open');overlay.classList.add('open');}
-function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open');}
-document.getElementById('cartToggle').addEventListener('click',openDrawer);
-document.getElementById('drawerClose').addEventListener('click',closeDrawer);
-overlay.addEventListener('click',closeDrawer);
-document.querySelectorAll('.add-cart').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.dataset.id,name=btn.dataset.name,link=btn.dataset.link||'#';if(!cart[id]){cart[id]={name,link};}renderCart();openDrawer();});});
-function removeItem(id){delete cart[id];renderCart();}
-function renderCart(){const ids=Object.keys(cart);drawerItems.innerHTML='';if(ids.length===0){drawerItems.innerHTML='<div class="drawer-empty">Nenhum produto selecionado ainda. Clique no "+" nos cards pra comparar aqui.</div>';}else{ids.forEach(id=>{const item=cart[id];const row=document.createElement('div');row.className='drawer-item';const buyHtml=(item.link&&item.link!=='#')?'<a href="'+item.link+'" target="_blank" rel="noopener" class="drawer-item-buy">Comprar →</a>':'<span class="drawer-item-pending">Link em breve</span>';row.innerHTML='<div class="drawer-item-name">'+item.name+'</div>'+buyHtml+'<button class="drawer-item-remove" onclick="removeItem(\''+id+'\')" aria-label="Remover">✕</button>';drawerItems.appendChild(row);});}cartBadge.textContent=ids.length;}
-const filterButtons=document.querySelectorAll('.filter-btn');const cards=document.querySelectorAll('.card');
-filterButtons.forEach(btn=>{btn.addEventListener('click',()=>{filterButtons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');const cat=btn.dataset.cat;cards.forEach(card=>{card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';});});});
+/* ============================================================
+   GARIMPO TECH — vitrine de afiliado (Mercado Livre)
+
+   Cada produto abaixo tem os campos reais:
+     img    -> foto do produto (CDN do Mercado Livre)
+     link   -> seu link de afiliado (meli.la, etiqueta la20260112075349)
+     rating -> nota real da listagem (deixe "" se não tiver)
+     badge  -> selo curto ("Mais vendido", "Novo") ou null
+
+   Sem desconto (priceOld = priceNew), o site não mostra preço
+   riscado nem "-%". Para marcar promoção, coloque um priceOld maior.
+   ============================================================ */
+
+const DEFAULT_LINK = 'https://www.mercadolivre.com.br/';
+const PAGE_SIZE = 12;
+
+    const products = [
+      // ---------- GADGETS ----------
+      { id:1, cat:"Gadgets", name:"Adaptador Hub USB 8 Portas RJ45 HDMI USB 3.0 e 2.0 Tipo C Voxo", priceOld:62.60, priceNew:62.60, sold:"", rating:"4.7", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_964858-MLA108951129599_032026-O.webp", link:"https://meli.la/3242dy9" },
+      { id:2, cat:"Gadgets", name:"Mousepad E-coibeu Carregamento Inducao Rapido RGB 17 Cores", priceOld:199.00, priceNew:199.00, sold:"", rating:"4.3", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_806611-MLB111053855601_042026-E.webp", link:"https://meli.la/2qZgoLK" },
+      { id:3, cat:"Gadgets", name:"Base Suporte Notebook Aluminio Portatil Articulado Davely", priceOld:24.90, priceNew:24.90, sold:"", rating:"4.8", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_862425-MLA95804056004_102025-O.webp", link:"https://meli.la/1bg1AjV" },
+      { id:4, cat:"Gadgets", name:"Clip Magnético Organizador de Fios e Cabos Adesivo (kit)", priceOld:37.00, priceNew:37.00, sold:"", rating:"4.4", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_858239-MLB91344395515_082025-E-clip-magnetico-organizador-fios-cabos-kit-12-unid-adesivo-3m.webp", link:"https://meli.la/1crkwzC" },
+      { id:5, cat:"Gadgets", name:"Mini Projetor Smart Portatil Full HD 4K Android Wi-Fi", priceOld:358.90, priceNew:358.90, sold:"", rating:"4.6", badge:"Novo", img:"https://http2.mlstatic.com/D_Q_NP_915118-MLA108945969324_032026-O.webp", link:"https://meli.la/1fvM5MK" },
+      // ---------- ÁUDIO ----------
+      { id:6, cat:"Áudio", name:"Fone Bluetooth 5.4 TWS Anti Ruido a Prova Dagua Pro Phone See", priceOld:78.90, priceNew:78.90, sold:"", rating:"4.7", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_653869-MLA106986107684_022026-O.webp", link:"https://meli.la/2QBKHCh" },
+      { id:7, cat:"Áudio", name:"Fone Xiaomi Redmi Buds 6 Play", priceOld:88.00, priceNew:88.00, sold:"", rating:"4.5", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_935289-MLA100007937509_122025-E.webp", link:"https://meli.la/2jH51mz" },
+      { id:8, cat:"Áudio", name:"Fone JBL Wave Buds 2 Perfect Fit 40 Horas Preto", priceOld:289.00, priceNew:289.00, sold:"", rating:"4.6", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_615398-MLA99983139077_112025-E.webp", link:"https://meli.la/1ovFKVt" },
+      { id:9, cat:"Áudio", name:"Fone Headphone Bluetooth Basike BA-FON193 ANC Microfone 40h", priceOld:256.00, priceNew:256.00, sold:"", rating:"4.5", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_696469-MLA88622010488_072025-E.webp", link:"https://meli.la/1cpekBj" },
+      { id:10, cat:"Áudio", name:"Caixa de Som Bluetooth Waaw by Alok Boom 100SB 40W IPX7", priceOld:699.90, priceNew:699.90, sold:"", rating:"4.7", badge:null, img:"https://http2.mlstatic.com/D_NQ_NP_854737-MLA110859639410_052026-O.webp", link:"https://meli.la/34azE4B" },
+      // ---------- CASA INTELIGENTE ----------
+      { id:11, cat:"Casa Inteligente", name:"Kit 2 Lampadas Smart Wi-Fi Positivo 9W RGB", priceOld:129.90, priceNew:129.90, sold:"", rating:"4.8", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_650934-MLA100081933705_122025-O.webp", link:"https://meli.la/2cs6dKW" },
+      { id:12, cat:"Casa Inteligente", name:"Tomada Inteligente Smart Wi-Fi Controle Automacao Ekaza 16A", priceOld:62.76, priceNew:62.76, sold:"", rating:"4.9", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_953374-MLA96319906125_102025-O.webp", link:"https://meli.la/2hdNPAU" },
+      { id:13, cat:"Casa Inteligente", name:"Lampada Inteligente Wi-Fi TP-Link Tapo L530E RGB", priceOld:59.00, priceNew:59.00, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_854919-MLA99506623242_112025-E.webp", link:"https://meli.la/1r4fn7M" },
+      { id:14, cat:"Casa Inteligente", name:"Lampada Smart Inteligente Alexa Wi-Fi EWS 410 Intelbras RGB", priceOld:39.00, priceNew:39.00, sold:"", rating:"4.7", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_923586-MLA99504165032_112025-E.webp", link:"https://meli.la/2U8i5vB" },
+      { id:15, cat:"Casa Inteligente", name:"Interruptor Inteligente Wi-Fi Novadigital 3 Teclas Touch", priceOld:77.99, priceNew:77.99, sold:"", rating:"4.9", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_895249-MLA100058685411_122025-O.webp", link:"https://meli.la/1sTCQMm" },
+      // ---------- GAMING ----------
+      { id:16, cat:"Gaming", name:"Mouse Gamer Redragon Cobra Pro M711-Pro Wireless", priceOld:295.54, priceNew:295.54, sold:"", rating:"4.9", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_712796-MLA113000545086_072026-O.webp", link:"https://meli.la/1mQSaEr" },
+      { id:17, cat:"Gaming", name:"Mouse Logitech G502 Hero Sensor 25K 25600 DPI", priceOld:306.00, priceNew:306.00, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_709473-CBT94601479491_102025-E.webp", link:"https://meli.la/1oFSCKd" },
+      { id:18, cat:"Gaming", name:"Teclado Gamer HyperX Alloy Core RGB Abnt2", priceOld:299.00, priceNew:299.00, sold:"", rating:"4.6", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_694158-MLA99986025645_112025-E.webp", link:"https://meli.la/1aomx7K" },
+      { id:19, cat:"Gaming", name:"Kit Gamer Completo Exbom Teclado Membrana e Mouse Optico", priceOld:64.50, priceNew:64.50, sold:"", rating:"4.5", badge:"Novo", img:"https://http2.mlstatic.com/D_Q_NP_863907-MLA99574319282_122025-O.webp", link:"https://meli.la/14PL8Pb" },
+      { id:20, cat:"Gaming", name:"Headset Gamer Havit H2002D P3 Multiplataforma", priceOld:219.90, priceNew:219.90, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_759854-MLA99487952684_112025-O.webp", link:"https://meli.la/33xwsze" },
+      // ---------- MOBILIDADE ----------
+      { id:21, cat:"Mobilidade", name:"Power Bank Pro 20000mAh ELG PB200BK PD+QC3.0", priceOld:200.99, priceNew:200.99, sold:"", rating:"4.8", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_851163-MLA99453292502_112025-O.webp", link:"https://meli.la/1qh8fgh" },
+      { id:22, cat:"Mobilidade", name:"Carregador Portatil Power Bank Turbo i2GO 20000mAh 20W", priceOld:329.00, priceNew:329.00, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_723772-MLB93940064029_102025-E.webp", link:"https://meli.la/1rEGGSJ" },
+      { id:23, cat:"Mobilidade", name:"Carregador Turbo 45W para Samsung S22/S23/S24", priceOld:159.90, priceNew:159.90, sold:"", rating:"4.4", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_856541-MLA104279190229_012026-O.webp", link:"https://meli.la/16ahB79" },
+      { id:24, cat:"Mobilidade", name:"Power Bank 20000mAh Carregador Portatil Turbo 22.5W Display Digital", priceOld:122.90, priceNew:122.90, sold:"", rating:"4.7", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_737097-MLA108177568778_032026-O.webp", link:"https://meli.la/2MEwgeq" },
+      { id:25, cat:"Mobilidade", name:"Suporte Veicular 360 para Celular Automotivo Dtimp", priceOld:49.90, priceNew:49.90, sold:"", rating:"4.6", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_977870-MLA110172900055_042026-O.webp", link:"https://meli.la/1CS9UU8" },
+      // ---------- COZINHA ----------
+      { id:26, cat:"Cozinha", name:"Fritadeira Air Fryer 5,5L Widemax Midea 1900W", priceOld:466.21, priceNew:466.21, sold:"", rating:"4.9", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_916338-MLA100014649407_122025-O.webp", link:"https://meli.la/2itsEJt" },
+      { id:27, cat:"Cozinha", name:"Air Fryer Oven WAP WAOD2 12L Inox 4 em 1", priceOld:514.90, priceNew:514.90, sold:"", rating:"4.9", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_705038-MLA99580433144_122025-O.webp", link:"https://meli.la/1jtG7Be" },
+      { id:28, cat:"Cozinha", name:"Air Fryer Philips Walita Serie 3000 7,2L Digital", priceOld:1097.38, priceNew:1097.38, sold:"", rating:"4.9", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_818147-MLA99507423644_112025-O.webp", link:"https://meli.la/1avuDXh" },
+      { id:29, cat:"Cozinha", name:"Liquidificador Easy Power Mondial 550W", priceOld:139.90, priceNew:139.90, sold:"", rating:"4.7", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_613737-MLA99529655740_122025-O.webp", link:"https://meli.la/11R96p7" },
+      { id:30, cat:"Cozinha", name:"Liquidificador Mondial Turbo Full 900W L-900 FB", priceOld:199.73, priceNew:199.73, sold:"", rating:"", badge:null, img:"https://http2.mlstatic.com/D_NQ_NP_698442-MLA99998734381_112025-O.webp", link:"https://meli.la/2wuciru" },
+      // ---------- FITNESS ----------
+      { id:31, cat:"Fitness", name:"Smartwatch Samsung Galaxy Fit3 Display 1.6 Rose", priceOld:499.89, priceNew:499.89, sold:"", rating:"4.9", badge:"Mais vendido", img:"https://http2.mlstatic.com/D_Q_NP_674204-MLA99446580250_112025-O.webp", link:"https://meli.la/1hcr8o4" },
+      { id:32, cat:"Fitness", name:"Smartwatch Redmi Watch 5 Lite Pulseira Silicone", priceOld:299.25, priceNew:299.25, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_929871-MLA109124146952_042026-O.webp", link:"https://meli.la/2jAJ8RE" },
+      { id:33, cat:"Fitness", name:"Smartband Huawei Band 10 Esportivo GPS", priceOld:560.00, priceNew:560.00, sold:"", rating:"4.6", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_2X_819564-MLB84807307167_052025-E-relogio-inteligente-smartband-huawei-band-10-esportivo-gps.webp", link:"https://meli.la/2G9Ptwj" },
+      { id:34, cat:"Fitness", name:"Relogio Xiaomi Smart Band 9 Active 5ATM Branco", priceOld:345.73, priceNew:345.73, sold:"", rating:"4.8", badge:null, img:"https://http2.mlstatic.com/D_Q_NP_988250-MLA110983487420_052026-O.webp", link:"https://meli.la/298swuL" },
+      { id:35, cat:"Fitness", name:"Smartwatch Amazfit GTS 4 Mini 1.65 Black", priceOld:640.00, priceNew:640.00, sold:"", rating:"4.5", badge:"Novo", img:"https://http2.mlstatic.com/D_Q_NP_2X_720604-MLA100008286363_122025-E.webp", link:"https://meli.la/14uyJAY" },
+    ];
+
+/* Ilustração por categoria — aparece enquanto a foto real não carrega */
+const art = {
+  'Gadgets':          '<rect x="30" y="34" width="40" height="32" rx="3"/><path d="M30 43h-8M30 50h-8M30 57h-8M70 43h8M70 50h8M70 57h8M40 34v-8M50 34v-8M60 34v-8M40 66v8M50 66v8M60 66v8"/><rect x="42" y="46" width="16" height="8" rx="2"/>',
+  'Áudio':            '<path d="M25 55v-6a25 25 0 0 1 50 0v6"/><rect x="20" y="53" width="13" height="22" rx="5"/><rect x="67" y="53" width="13" height="22" rx="5"/>',
+  'Casa Inteligente': '<path d="M37 60a16 16 0 1 1 26 0c-3 3-4 6-4 10H41c0-4-1-7-4-10Z"/><path d="M43 78h14M45 84h10"/>',
+  'Gaming':           '<path d="M33 42h34a15 15 0 0 1 14 18l-1 4a9 9 0 0 1-16 3l-3-5H36l-3 5a9 9 0 0 1-16-3l-1-4a15 15 0 0 1 14-18Z"/><path d="M28 52h10M33 47v10"/><circle cx="64" cy="50" r="2.5"/><circle cx="71" cy="57" r="2.5"/>',
+  'Mobilidade':       '<rect x="35" y="22" width="30" height="56" rx="6"/><path d="M45 18h10v4H45z"/><path d="M52 36l-8 16h9l-6 14"/>',
+  'Cozinha':          '<path d="M32 42l4 38h28l4-38Z"/><rect x="29" y="34" width="42" height="9" rx="4"/><circle cx="60" cy="38" r="2.5"/><path d="M42 54h16v14H42z"/>',
+  'Fitness':          '<rect x="38" y="34" width="24" height="32" rx="6"/><path d="M43 34l2-12h10l2 12M43 66l2 12h10l2-12"/><circle cx="50" cy="50" r="8"/>',
+};
+
+const gradients = [
+  'linear-gradient(145deg,#1c2b4a,#121c33)',
+  'linear-gradient(145deg,#202a46,#14203a)',
+  'linear-gradient(145deg,#1a2c4d,#111b30)',
+  'linear-gradient(145deg,#232c44,#151f36)'
+];
+
+const categories = ['Todos', ...Array.from(new Set(products.map(p => p.cat)))];
+let active = 'Todos';
+let shown = PAGE_SIZE;
+
+const brl = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function currentList() {
+  return active === 'Todos' ? products : products.filter(p => p.cat === active);
+}
+
+function renderChips() {
+  const row = document.getElementById('chipRow');
+  row.innerHTML = categories.map(c =>
+    `<button class="chip ${c === active ? 'active' : ''}" data-cat="${esc(c)}">${esc(c)}</button>`
+  ).join('');
+  row.querySelectorAll('.chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      active = btn.dataset.cat;
+      shown = PAGE_SIZE;
+      renderChips();
+      renderGrid();
+    });
+  });
+}
+
+function cardHTML(p, i) {
+  const off = Math.round((1 - p.priceNew / p.priceOld) * 100);
+  const grad = gradients[i % gradients.length];
+  const href = p.link || DEFAULT_LINK;
+  const shape = art[p.cat] || art['Gadgets'];
+
+  const visual = p.img
+    ? `<img class="card-photo" src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.remove()">`
+    : '';
+
+  const temDesconto = off > 0 && p.priceOld > p.priceNew;
+
+  const temNota = p.rating && !/^0[.,]?0?$/.test(String(p.rating).trim());
+  const temVendas = p.sold && !/^0$/.test(String(p.sold).trim());
+  const prova = [
+    temNota ? `<span class="star">★</span> ${esc(p.rating)}` : '',
+    temVendas ? `${esc(p.sold)} vendidos` : ''
+  ].filter(Boolean).join(' · ');
+
+  return `
+  <article class="card" style="animation-delay:${(i % 12) * 0.04}s">
+    <div class="card-visual" style="background:${grad}">
+      <div class="card-art" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">${shape}</svg>
+        <span class="art-label">${esc(p.cat)}</span>
+      </div>
+      ${visual}
+      <span class="card-tag">Nº${String(p.id).padStart(3,'0')}</span>
+      ${temDesconto ? `<span class="card-badge">-${off}%</span>` : ''}
+      ${p.badge ? `<span class="card-trend">${esc(p.badge)}</span>` : ''}
+    </div>
+    <div class="card-body">
+      <p class="card-cat">${esc(p.cat)}</p>
+      <h3 class="card-name">${esc(p.name)}</h3>
+      ${prova ? `<p class="card-proof">${prova}</p>` : ''}
+      <div class="price-row">
+        ${temDesconto ? `<span class="price-old">${brl(p.priceOld)}</span>` : ''}
+        <span class="price-new">${brl(p.priceNew)}</span>
+      </div>
+      <a class="card-cta" href="${esc(href)}" target="_blank" rel="noopener sponsored">Ver no Mercado Livre →</a>
+    </div>
+  </article>`;
+}
+
+function renderGrid() {
+  const list = currentList();
+  const slice = list.slice(0, shown);
+
+  document.getElementById('grid').innerHTML = slice.map(cardHTML).join('');
+  document.getElementById('countLabel').textContent =
+    list.length + (list.length === 1 ? ' achado garimpado' : ' achados garimpados');
+  document.getElementById('loadMoreRow').style.display =
+    shown < list.length ? 'flex' : 'none';
+}
+
+document.getElementById('loadMore').addEventListener('click', () => {
+  shown += PAGE_SIZE;
+  renderGrid();
+});
+
+renderChips();
+renderGrid();
+
+const burger = document.getElementById('burger');
+const siteNav = document.getElementById('siteNav');
+burger.addEventListener('click', () => {
+  const isOpen = siteNav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(isOpen));
+});
 </script>
 </body>
 </html>
