@@ -56,6 +56,8 @@
   .nav-links { display:flex; gap:32px; font-size:14px; font-weight:500; }
   .nav-links a { opacity:0.82; transition: opacity .2s, color .2s; }
   .nav-links a:hover { opacity:1; color:var(--coral-bright); }
+  .back-hub { color:var(--mustard) !important; opacity:1 !important; font-weight:600; }
+  .back-hub:hover { color:var(--coral-bright) !important; }
   .nav-cta {
     font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em;
     border:1px solid var(--coral); color:var(--coral); padding:9px 18px; border-radius:999px;
@@ -214,6 +216,7 @@
     <div class="wrap">
       <a href="#top" class="logo"><span class="diamond"></span>Garimpo <span>TECH</span></a>
       <nav class="nav-links">
+        <a href="../" class="back-hub" data-hub>◇ Garimpo</a>
         <a href="#vitrine">Vitrine</a>
         <a href="#como-funciona">Como funciona</a>
       </nav>
@@ -223,6 +226,7 @@
       </button>
     </div>
     <div class="wrap mobile-panel" id="mobilePanel">
+      <a href="../" class="back-hub" data-hub>◇ Voltar para a Garimpo</a>
       <a href="#vitrine">Vitrine</a>
       <a href="#como-funciona">Como funciona</a>
     </div>
@@ -525,6 +529,14 @@ burger.addEventListener('click', () => {
   const isOpen = siteNav.classList.toggle('open');
   burger.setAttribute('aria-expanded', String(isOpen));
 });
+
+/* Link "voltar para a Garimpo": aponta pro hub em qualquer contexto
+   (subpasta garimpotechh.com.br/tech  ->  ../  ;  subdomínio tech.valegarimpar  ->  raiz do domínio-mãe) */
+(function(){
+  var isSub = /^(tech|look)\./i.test(location.hostname);
+  var hubHref = isSub ? 'https://valegarimpar.com.br/' : '../';
+  document.querySelectorAll('[data-hub]').forEach(function(a){ a.href = hubHref; });
+})();
 </script>
 </body>
 </html>
